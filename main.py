@@ -18,6 +18,12 @@ async def ping(ctx: commands.Context):
     msg = await ctx.send("Ping...")
     await msg.edit(content=f"Ping: `{int((time.monotonic() - before) * 1000)}ms`")
 
-TOKEN = os.getenv("DISCORD_TOKEN")
+@chihiro.event
+async def on_ready():
+    status_ch = chihiro.get_channel(978613069976588298)
+    await status_ch.send(f"Bot {chihiro.user.name} activo")
+    print(f"Bot ({chihiro.user.name} - [{chihiro.user.id}])")
+
+TOKEN = os.getenv("DISCORD_TOKEN") 
 chihiro.run(TOKEN)
 
