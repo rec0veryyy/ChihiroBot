@@ -24,6 +24,9 @@ async def on_ready():
     await status_ch.send(f"Bot {chihiro.user.name} activo")
     print(f"Bot ({chihiro.user.name} - [{chihiro.user.id}])")
 
+@chihiro.command()
+async def say(ctx: commands.Context, *, msg):
+    await ctx.send(f"-> {msg}")
+
 TOKEN = os.getenv("DISCORD_TOKEN") 
 chihiro.run(TOKEN)
-
